@@ -20,7 +20,7 @@ const Navbar = () => {
   }, []);
   return (
     <div
-      className={`w-screen h-16 z-50  border-b fixed top-0 duration-500 transition-colors ease-in ${
+      className={`w-screen h-16 z-50 border-b border-gray-500 fixed top-0 duration-500 transition-colors ease-in ${
         navbar && "bg-gray-800 border-b-0"
       }`}
     >
