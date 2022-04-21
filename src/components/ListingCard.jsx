@@ -1,6 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 const ListingCard = ({ item }) => {
+  const navigate = useNavigate();
   return (
-    <div className="w-full h-[440px] ">
+    <div
+      onClick={() => navigate(`/project/${item.street}`)}
+      className="w-full h-[440px] "
+    >
       <div className="w-full h-full relative">
         <div
           className=" w-full h-1/2 bg-center bg-cover rounded-xl"

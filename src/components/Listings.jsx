@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import apiReq from "../api/apiReq";
 import ListingCard from "./ListingCard";
+import Loader from "./Loader";
 const Listings = () => {
   const cats = ["Residential", "Commercial", "Apartment", "Office Space"];
   const [currentCat, setCurrentCat] = useState("Residential");
   const [data, setData] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(true);
+  console.log(data);
   const getData = async () => {
     try {
       const response = await apiReq.get("/propertys");
-      console.log(response.data);
       setData(response.data);
+      setIsLoading(false);
     } catch (err) {
       console.log(err);
+      setIsLoading(true);
     }
   };
   useEffect(() => {
@@ -32,27 +35,35 @@ const Listings = () => {
             Explore All Listing
           </button>
         </div>
-        <div className="w-full flex flex-col items-center py-10 space-y-2  ">
-          {cats.map((cat) => (
-            <span
-              onClick={() => setCurrentCat(cat)}
-              key={cat}
-              className={`w-full text-center border-b-2 py-1 transition-colors duration-300 ${
-                currentCat === cat &&
-                "border-orange-600 text-orange-600 font-semibold"
-              }`}
-            >
-              {cat}
-            </span>
-          ))}
-        </div>
-        <div className="w-full min-h-full flex flex-col space-y-5">
-          {data
-            ?.filter((c) => c.category === currentCat)
-            .map((item) => (
-              <ListingCard item={item} />
-            ))}
-        </div>
+        {isLoading ? (
+          <div className="w-full flex items-center justify-center h-80">
+            <Loader />
+          </div>
+        ) : (
+          <>
+            <div className="w-full flex flex-col items-center py-10 space-y-2  ">
+              {cats.map((cat) => (
+                <span
+                  onClick={() => setCurrentCat(cat)}
+                  key={cat}
+                  className={`w-full text-center border-b-2 py-1 transition-colors duration-300 ${
+                    currentCat === cat &&
+                    "border-orange-600 text-orange-600 font-semibold"
+                  }`}
+                >
+                  {cat}
+                </span>
+              ))}
+            </div>
+            <div className="w-full min-h-full flex flex-col space-y-5">
+              {data
+                ?.filter((c) => c.category === currentCat)
+                .map((item) => (
+                  <ListingCard key={item._id} item={item} />
+                ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

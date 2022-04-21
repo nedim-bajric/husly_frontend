@@ -1,13 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 import { TiArrowDown } from "react-icons/ti";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 import Listings from "../components/Listings";
+import Team from "../components/Team";
+import cat from "../helpers/categories";
 
 const Home = () => {
   const hidden = useSelector((state) => state.menu.hidden);
-  const myRef = useRef(null);
-  const scrollTo = () => myRef.current.scrollIntoView({ behavior: "smooth" });
   const [bounce, setBounce] = useState(false);
+  const myRef = useRef(null);
+  const navigate = useNavigate();
+  const scrollTo = () => myRef.current.scrollIntoView({ behavior: "smooth" });
 
   const handleBounce = () => {
     if (window.scrollY > 5) {
@@ -50,6 +55,81 @@ const Home = () => {
         <div ref={myRef} className="w-full min-h-screen py-16">
           <Listings />
         </div>
+        <div className="w-full min-h-screen py-16">
+          <div className="w-full h-full px-5 py-2 flex flex-col items-center space-y-8">
+            <div className="w-full flex flex-col items-start space-y-3">
+              <h3 className="font-bold text-gray-500">ABOUT US</h3>
+              <h1 className="text-5xl font-medium">
+                We're not your typical real estate agency
+              </h1>
+              <p className="text-gray-600">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
+                quia animi ipsam quas tenetur, cum dolore perferendis nihil
+                possimus repellat! Repudiandae molestiae hic officiis mollitia?
+                Cumque recusandae quidem explicabo ex?
+              </p>
+            </div>
+            <button className="bg-orange-600 text-white font-medium text-lg px-6 py-2 rounded-md self-start">
+              Learn More{" "}
+            </button>
+            <img
+              className="border-b-8 border-r-8 border-orange-600 w-10/12"
+              src="https://assets.website-files.com/5f9bf5434935849be0a09d61/5f9c4daa5fbbac234cad8504_austin-distel-jpHw8ndwJ_Q-unsplash2%20(1)-p-800.jpeg"
+              alt="about"
+            />
+          </div>
+        </div>
+        <div className="w-full min-h-screen py-16">
+          <div className="w-full h-full px-5 py-2 flex flex-col items-center space-y-8">
+            <div className="w-full">
+              <h3 className="font-bold text-gray-500">CATEGORIES</h3>
+              <h1 className="text-4xl font-medium">Search by category</h1>
+            </div>
+            <div className="w-full flex flex-col items-center space-y-2">
+              {cat.map((c) => (
+                <div
+                  onClick={() => navigate(c.path)}
+                  style={{
+                    backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.7) 100%) ,url('${c.img}')`,
+                  }}
+                  className="w-full h-96 hover:cursor-pointer hover:scale-75 rounded-lg bg-center bg-cover flex flex-col justify-end px-6 py-10"
+                >
+                  <span className="text-white uppercase font-bold text-2xl">
+                    {c.title}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="w-full min-h-screen py-16">
+          <div className="w-full h-full px-5 py-2 flex flex-col items-center space-y-8">
+            <div className="w-full flex flex-col items-start space-y-3">
+              <h3 className="font-bold text-gray-500">WHY CHOOSE US</h3>
+              <h1 className="text-5xl font-medium">
+                We'll find the perfect home for you
+              </h1>
+              <p className="text-gray-600">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero
+                quia animi ipsam quas tenetur, cum dolore perferendis nihil
+                possimus repellat! Repudiandae molestiae hic officiis mollitia?
+                Cumque recusandae quidem explicabo ex?
+              </p>
+            </div>
+            <button className="bg-orange-600 text-white font-medium text-lg px-6 py-2 rounded-md self-start">
+              Learn More{" "}
+            </button>
+            <img
+              className="border-b-8 border-r-8 border-orange-600 w-10/12"
+              src="https://assets.website-files.com/5f9bf5434935849be0a09d61/5f9d94a2a9647272daf9333d_collov-home-design-h-1j_s0dhcw-unsplash_3fqgx-p-800.jpeg"
+              alt="about"
+            />
+          </div>
+        </div>
+        <div className="w-full min-h-screen">
+          <Team />
+        </div>
+        <Footer />
       </div>
     </div>
   );
