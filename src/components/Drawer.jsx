@@ -1,8 +1,10 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { handleMenu } from "../redux/Slices/menuSlice";
 
 const Drawer = () => {
   const hidden = useSelector((state) => state.menu.hidden);
+  const dispatch = useDispatch();
   const menu = [
     { path: "/", name: "Home" },
     { path: "/about", name: "About Us" },
@@ -17,7 +19,7 @@ const Drawer = () => {
     >
       <div className="w-full h-full flex flex-col items-center justify-start py-20 text-xl text-white space-y-10 font-light">
         {menu.map((i) => (
-          <Link to={i.path} key={i.name}>
+          <Link to={i.path} key={i.name} onClick={() => dispatch(handleMenu())}>
             {i.name}{" "}
           </Link>
         ))}
