@@ -74,7 +74,10 @@ const Home = () => {
                   mollitia? Cumque recusandae quidem explicabo ex?
                 </p>
               </div>
-              <button className="bg-orange-600 text-white font-medium text-lg px-6 py-2 rounded-md self-start">
+              <button
+                onClick={() => navigate("/about")}
+                className="bg-orange-600 text-white font-medium text-lg px-6 py-2 rounded-md self-start"
+              >
                 Learn More{" "}
               </button>
               <img
@@ -121,7 +124,10 @@ const Home = () => {
                   mollitia? Cumque recusandae quidem explicabo ex?
                 </p>
               </div>
-              <button className="bg-orange-600 text-white font-medium text-lg px-6 py-2 rounded-md self-start">
+              <button
+                onClick={() => navigate("/about")}
+                className="bg-orange-600 text-white font-medium text-lg px-6 py-2 rounded-md self-start"
+              >
                 Learn More{" "}
               </button>
               <img

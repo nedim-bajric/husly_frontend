@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import apiReq from "../api/apiReq";
 import ListingCard from "./ListingCard";
 import Loader from "./Loader";
@@ -7,7 +8,7 @@ const Listings = () => {
   const [currentCat, setCurrentCat] = useState("Residential");
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  console.log(data);
+  const navigate = useNavigate();
   const getData = async () => {
     try {
       const response = await apiReq.get("/propertys");
@@ -31,7 +32,10 @@ const Listings = () => {
           <span className="text-gray-500 text-lg">
             Our latest listings at a glance. Explore property from all sizes.
           </span>
-          <button className=" text-orange-500 font-medium text-xl border-2 border-orange-500 px-6 py-2 rounded-md">
+          <button
+            onClick={() => navigate("/listings")}
+            className=" text-orange-500 font-medium text-xl border-2 border-orange-500 px-6 py-2 rounded-md"
+          >
             Explore All Listing
           </button>
         </div>

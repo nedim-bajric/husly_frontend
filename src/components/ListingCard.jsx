@@ -1,10 +1,15 @@
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { pickData } from "../redux/Slices/dataSlice";
 
 const ListingCard = ({ item }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <div
-      onClick={() => navigate(`/project/${item.street}`)}
+      onClick={() =>
+        navigate(`/project/${item.street}`) || dispatch(pickData(item))
+      }
       className="w-full h-[440px] "
     >
       <div className="w-full h-full relative">
