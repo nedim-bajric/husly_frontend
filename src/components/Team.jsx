@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import apiReq from "../api/apiReq";
+import { pickAgent } from "../redux/Slices/dataSlice";
 import Loader from "./Loader";
 const Team = () => {
   const [agents, setAgents] = useState([]);
   const [loading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const getAgents = async () => {
     try {
       const response = await apiReq.get("/agents");
@@ -33,7 +36,10 @@ const Team = () => {
             <div className="w-full flex flex-col items-center space-y-5 p-5">
               {agents.map((agent) => (
                 <div
-                  onClick={() => navigate(`team-member/${agent.name}`)}
+                  onClick={() =>
+                    navigate(`team-member/${agent.name}`) ||
+                    dispatch(pickAgent(agent))
+                  }
                   style={{
                     backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.7) 100%) ,url('${agent.image}')`,
                   }}
