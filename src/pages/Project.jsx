@@ -8,6 +8,7 @@ import { BiBuilding } from "react-icons/bi";
 import { RiMedalLine } from "react-icons/ri";
 import NotFound from "../components/NotFound";
 import Footer from "../components/Footer";
+import ImageShow from "../components/imageShow";
 const Project = () => {
   const item = useSelector((state) => state.data.data);
   const [hidden, setHidden] = useState(true);
@@ -17,7 +18,18 @@ const Project = () => {
       {item._id?.length > 0 ? (
         <>
           <Navbar />
-          <div className="w-screen min-h-screen ">
+          <div
+            className={`w-screen overflow-hidden  ${
+              !hidden ? "max-h-screen" : "min-h-screen"
+            }`}
+          >
+            {!hidden && (
+              <ImageShow
+                hidden={hidden}
+                setHidden={setHidden}
+                images={item.images}
+              />
+            )}
             <div className="w-full h-full">
               <div className="w-full h-40 bg-gray-800 py-24 px-5 flex flex-col text-white">
                 <span className="font-bold text-3xl">{item.street}</span>
@@ -142,21 +154,7 @@ const Project = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-full h-full bg-gray-800">
-                <div className="px-5 py-10 flex flex-col space-y-5">
-                  <h1 className="text-white font-bold text-3xl">
-                    Image gallery
-                  </h1>
-                  <div className="w-full h-full flex flex-col space-y-5">
-                    {item.images.map((i) => (
-                      <div
-                        className="w-full h-72 bg-red-500 bg-center bg-cover"
-                        style={{ backgroundImage: `url("${i}")` }}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
+
               <Footer />
             </div>
           </div>
