@@ -50,9 +50,9 @@ const Listings = () => {
                 <span
                   onClick={() => setCurrentCat(cat)}
                   key={cat}
-                  className={`w-full text-center border-b-2 py-1 transition-colors duration-300 ${
+                  className={`w-full text-center  py-1 transition-colors duration-300 ${
                     currentCat === cat &&
-                    "border-orange-600 text-orange-600 font-semibold"
+                    "border-orange-600 text-orange-600 font-semibold border-b-2"
                   }`}
                 >
                   {cat}

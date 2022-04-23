@@ -1,17 +1,19 @@
 import { useEffect, useRef, useState } from "react";
 import { TiArrowDown } from "react-icons/ti";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Listings from "../components/Listings";
 import Team from "../components/Team";
 import cat from "../helpers/categories";
+import { pickCat } from "../redux/Slices/dataSlice";
 
 const Home = () => {
   const hidden = useSelector((state) => state.menu.hidden);
   const [bounce, setBounce] = useState(false);
   const myRef = useRef(null);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const scrollTo = () => myRef.current.scrollIntoView({ behavior: "smooth" });
 
@@ -96,7 +98,7 @@ const Home = () => {
               <div className="w-full flex flex-col items-center space-y-2">
                 {cat.map((c) => (
                   <div
-                    onClick={() => navigate(c.path)}
+                    onClick={() => navigate(c.path) || dispatch(pickCat(c))}
                     style={{
                       backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.7) 100%) ,url('${c.img}')`,
                     }}
