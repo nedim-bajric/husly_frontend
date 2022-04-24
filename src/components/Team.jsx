@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import apiReq from "../api/apiReq";
 import { pickAgent } from "../redux/Slices/dataSlice";
 import Loader from "./Loader";
@@ -35,23 +35,22 @@ const Team = () => {
           ) : (
             <div className="w-full flex flex-col items-center space-y-5 p-5">
               {agents.map((agent) => (
-                <div
-                  onClick={() =>
-                    navigate(`team-member/${agent.name}`) ||
-                    dispatch(pickAgent(agent))
-                  }
-                  style={{
-                    backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.7) 100%) ,url('${agent.image}')`,
-                  }}
-                  className="w-full h-96 hover:cursor-pointer hover:scale-75 rounded-lg bg-center bg-cover flex flex-col justify-end px-6 py-10 drop-shadow-lg"
-                >
-                  <span className="text-white uppercase font-bold text-2xl">
-                    {agent.name}
-                  </span>
-                  <span className="text-gray-500 uppercase font-medim text-sm">
-                    {agent.role}
-                  </span>
-                </div>
+                <Link to={`/team-member/${agent.name}`} className="w-full">
+                  <div
+                    onClick={() => dispatch(pickAgent(agent))}
+                    style={{
+                      backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.7) 100%) ,url('${agent.image}')`,
+                    }}
+                    className="w-full h-96 hover:cursor-pointer hover:scale-75 rounded-lg bg-center bg-cover flex flex-col justify-end px-6 py-10 drop-shadow-lg"
+                  >
+                    <span className="text-white uppercase font-bold text-2xl">
+                      {agent.name}
+                    </span>
+                    <span className="text-gray-500 uppercase font-medim text-sm">
+                      {agent.role}
+                    </span>
+                  </div>
+                </Link>
               ))}
             </div>
           )}
