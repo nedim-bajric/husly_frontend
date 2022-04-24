@@ -37,14 +37,14 @@ const Team = () => {
               {agents.map((agent) => (
                 <Link
                   to={`/team-member/${agent.name}`}
-                  className="w-full sm:w-2/5 sm:my-5"
+                  className="w-full sm:w-2/5 sm:my-5 lg:w-1/5"
                 >
                   <div
                     onClick={() => dispatch(pickAgent(agent))}
                     style={{
                       backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.7) 100%) ,url('${agent.image}')`,
                     }}
-                    className="w-full h-96 hover:cursor-pointer hover:scale-75 rounded-lg bg-center bg-cover flex flex-col justify-end px-6 py-10 drop-shadow-lg"
+                    className="w-full h-96 hover:cursor-pointer hover:scale-105 transition-transform duration-500 rounded-lg bg-center bg-cover flex flex-col justify-end px-6 py-10 drop-shadow-lg"
                   >
                     <span className="text-white uppercase font-bold text-2xl">
                       {agent.name}

@@ -17,11 +17,11 @@ const Member = () => {
           >
             <span className="font-bold text-2xl">{agent.name}</span>
           </div>
-          <div className="w-full h-full">
-            <div className="w-full h-full px-5 py-10">
-              <img src={agent.image} className="rounded-xl" />
+          <div className="w-full h-full lg:flex  items-center  justify-center">
+            <div className="w-full h-full px-5 py-10 flex items-center lg:justify-end">
+              <img src={agent.image} className="rounded-xl max-w-sm" />
             </div>
-            <div className="w-full h-full flex flex-col items-start justify-around p-5 space-y-3">
+            <div className="w-full h-full flex flex-col items-start justify-around p-5 space-y-3 ">
               <h1 className="font-medium text-3xl">My contact information</h1>
               <div className="flex items-center space-x-5">
                 <AiOutlineMail
@@ -42,8 +42,8 @@ const Member = () => {
                 </span>
               </div>
             </div>
-            <Footer />
           </div>
+          <Footer />
         </div>
       </div>
     </>

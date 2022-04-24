@@ -9,19 +9,19 @@ const ImageShow = ({ hidden, setHidden, images }) => {
         <div className="w-full flex items-center justify-end p-3">
           <span
             onClick={() => setHidden(!hidden)}
-            className="font-medium text-3xl text-white"
+            className="font-medium text-3xl text-white cursor-pointer"
           >
             X
           </span>
         </div>
         <div
           style={{ backgroundImage: `url("${images[image]}")` }}
-          className="w-full h-60 bg-cover bg-center transition-all duration-500 ease-out"
+          className="w-full h-60 bg-cover bg-center transition-all duration-500 ease-out lg:max-w-2xl lg:h-80 mx-auto"
         />
         <div className="flex w-full items-center justify-evenly pb-2 ">
           {images.map((i) => (
             <img
-              className="w-20"
+              className="w-20 lg:w-28 cursor-pointer"
               src={i}
               alt="i"
               onClick={() => setImage(images.indexOf(i))}

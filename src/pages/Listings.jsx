@@ -48,24 +48,24 @@ const Listings = () => {
               <div className="w-full h-full py-12 px-5 space-y-10">
                 <div className="w-full">
                   <div
-                    className="w-full flex items-center justify-between "
+                    className="w-full flex items-center justify-between lg:w-80 mx-auto"
                     onClick={() => setCatHidden(!catHidden)}
                   >
                     <span className="font-medium">Choose a category...</span>
                     <RiArrowDropDownLine size={35} />
                   </div>
                   {!catHidden && (
-                    <div className="flex flex-col items-center space-y-2 py-5 shadow-xl">
+                    <div className="flex flex-col items-center space-y-2 py-5 shadow-xl lg:w-80 mx-auto">
                       {cat.map((c) => (
                         <span onClick={() => navigate(c.path)}>{c.title}</span>
                       ))}
                     </div>
                   )}
                 </div>
-                <div className="w-full flex flex-col items-center space-y-2 text-lg ">
+                <div className="w-full flex flex-col items-center space-y-2 text-lg lg:flex-row  lg:justify-center ">
                   <span
                     onClick={() => setCate(true)}
-                    className={`w-full text-center font-bold transition-colors duration-500 ${
+                    className={`w-full lg:w-1/4 text-center font-bold transition-colors duration-500 hover:cursor-pointer ${
                       cate && "border-b-2  border-orange-500 text-orange-500"
                     }`}
                   >
@@ -73,7 +73,7 @@ const Listings = () => {
                   </span>
                   <span
                     onClick={() => setCate(false)}
-                    className={`w-full text-center font-bold transition-colors duration-500 ${
+                    className={`w-full lg:w-1/4 text-center font-bold transition-colors duration-500 hover:cursor-pointer ${
                       !cate && "border-b-2  border-orange-500 text-orange-500"
                     }`}
                   >
@@ -81,7 +81,7 @@ const Listings = () => {
                   </span>
                 </div>
 
-                <div className="w-full h-full">
+                <div className="w-full h-full lg:flex lg:flex-wrap items-center justify-around">
                   {data
                     ?.filter((c) => c.sale === cate)
                     .map((item) => (

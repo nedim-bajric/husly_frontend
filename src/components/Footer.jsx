@@ -9,8 +9,8 @@ const Footer = () => {
     { name: "Contact", path: "/contact" },
   ];
   return (
-    <div className="w-screen h-screen bg-gray-800">
-      <div className="w-full h-full px-5 py-20 flex flex-col items-center justify-between">
+    <div className="w-screen h-screen bg-gray-800 lg:h-60">
+      <div className="w-full h-full px-5 py-20 lg:py-5 flex flex-col items-center justify-between ">
         <div className="flex flex-col items-center ">
           <img
             width={90}
@@ -19,28 +19,30 @@ const Footer = () => {
           />
           <span className="text-gray-500">© Husly</span>
         </div>
-        <p className="text-gray-500 text-center ">
-          With over 20 years of experience, we at Husly are pioneers in the real
-          estate business. We believe there's a perfect home for everybody, no
-          matter the budget. That's why we always find the best homes for your
-          budget.
-        </p>
-        <div className="flex flex-col items-center space-y-1 text-gray-500">
-          <h4 className="text-white text-xl">Useful Links</h4>
-          {links.map((link) => (
-            <Link to={link.path}>{link.name}</Link>
-          ))}
-        </div>
-        <div className="flex flex-col items-center space-y-1 text-gray-500">
-          <h4 className="text-white text-xl">Location</h4>
-          <span>3880 Braxton Street</span>
-          <span>Chicago, Il 60606</span>
-          <span>United States</span>
-        </div>
-        <div className="flex flex-col items-center space-y-1 text-gray-500">
-          <h4 className="text-white text-xl">Contact Us</h4>
-          <span>815-515-2350</span>
-          <span>company@domain.com</span>
+        <div className="lg:flex w-full lg:justify-between lg:text-xs ">
+          <p className="text-gray-500 text-center lg:max-w-xs ">
+            With over 20 years of experience, we at Husly are pioneers in the
+            real estate business. We believe there's a perfect home for
+            everybody, no matter the budget. That's why we always find the best
+            homes for your budget.
+          </p>
+          <div className="flex flex-col items-center space-y-1 text-gray-500">
+            <h4 className="text-white text-xl">Useful Links</h4>
+            {links.map((link) => (
+              <Link to={link.path}>{link.name}</Link>
+            ))}
+          </div>
+          <div className="flex flex-col items-center space-y-1 text-gray-500">
+            <h4 className="text-white text-xl">Location</h4>
+            <span>3880 Braxton Street</span>
+            <span>Chicago, Il 60606</span>
+            <span>United States</span>
+          </div>
+          <div className="flex flex-col items-center space-y-1 text-gray-500">
+            <h4 className="text-white text-xl">Contact Us</h4>
+            <span>815-515-2350</span>
+            <span>company@domain.com</span>
+          </div>
         </div>
       </div>
     </div>

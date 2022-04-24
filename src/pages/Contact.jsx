@@ -32,33 +32,37 @@ const Contact = () => {
           >
             <span className="font-bold text-2xl">Contact us</span>
           </div>
-          <div className="w-full h-full px-5 py-20 flex flex-col items-start space-y-14">
-            <div className="w-full h-full flex flex-col items-start ">
-              <h1 className="text-3xl font-bold">Get in touch</h1>
-              <p>
-                Got a question about one of our listings, want to sell your
-                house or just a question? Contact us and we'll get back to you
-                as soon as possible.
-              </p>
+          <div className="w-full h-full px-5 py-20 flex flex-col items-start space-y-14 lg:flex-row lg:items-center lg:justify-around">
+            <div className="">
+              <div className="w-full h-full flex flex-col items-start lg:items-center ">
+                <h1 className="text-3xl font-bold">Get in touch</h1>
+                <p className="text-center">
+                  Got a question about one of our listings, want to sell your
+                  house or just a question? Contact us and we'll get back to you
+                  as soon as possible.
+                </p>
+              </div>
+              <div className="lg:flex lg:flex-col items-start max-w-xs mx-auto justify-center">
+                <div className=" h-full flex flex-col items-start space-y-8 ">
+                  <div className="flex items-start space-x-3 text-orange-500">
+                    <BiBuilding size={30} />
+                    <span className="max-w-xs text-black">
+                      3880 Braxton Street Chichago, Il 60606 United States
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3 text-orange-500">
+                  <BiEnvelope size={30} />
+                  <span className="text-black">company@domain.com</span>
+                </div>
+                <div className="flex items-start space-x-3 text-orange-500">
+                  <BiMobile size={30} />
+                  <span className="text-black">815-323-2651-421</span>
+                </div>
+              </div>
             </div>
-            <div className="w-full h-full flex flex-col items-start space-y-8 font-bold">
-              <div className="flex items-start space-x-3 text-orange-500">
-                <BiBuilding size={30} />
-                <span className="max-w-xs text-black">
-                  3880 Braxton Street Chichago, Il 60606 United States
-                </span>
-              </div>
-              <div className="flex items-start space-x-3 text-orange-500">
-                <BiEnvelope size={30} />
-                <span className="text-black">company@domain.com</span>
-              </div>
-              <div className="flex items-start space-x-3 text-orange-500">
-                <BiMobile size={30} />
-                <span className="text-black">815-323-2651-421</span>
-              </div>
-            </div>
-            <div className="w-full h-full space-y-5">
-              <div className="w-full h-full flex flex-col items-start space-y-8">
+            <div className="w-full h-full space-y-5 lg:flex  lg:flex-col items-center">
+              <div className="w-full h-full flex flex-col items-start space-y-8 max-w-md  ">
                 <input
                   onChange={(e) => setData({ ...data, name: e.target.value })}
                   placeholder="Enter your name"
@@ -82,7 +86,7 @@ const Contact = () => {
                   className="w-full border-b-2 border-orange-500 py-2 outline-none"
                 />
               </div>
-              <div className="w-full h-full flex items-start">
+              <div className="w-full h-full flex items-start lg:justify-center">
                 <button
                   onClick={sendEmail}
                   className="bg-orange-600 text-white font-medium px-5 py-2 rounded"

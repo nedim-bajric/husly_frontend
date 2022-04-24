@@ -43,7 +43,7 @@ const Estate = () => {
               >
                 <span className="font-bold text-2xl">{cat.title}</span>
               </div>
-              <div className="w-10/12 mx-auto mt-10 h-full">
+              <div className="w-10/12 mx-auto mt-10 h-full flex items-center justify-center">
                 {data.map((item) => (
                   <ListingCard item={item} />
                 ))}
