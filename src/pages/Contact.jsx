@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import { BiBuilding, BiEnvelope, BiMobile } from "react-icons/bi";
 import Footer from "../components/Footer";
+import apiReq from "../api/apiReq";
 const Contact = () => {
+  const [data, setData] = useState({
+    email: "",
+    phone: "",
+    name: "",
+    message: "",
+  });
+  const [error, setError] = useState("");
+  const sendEmail = () => {
+    try {
+      apiReq.post("/email", data);
+      window.location.reload();
+    } catch {
+      setError(true);
+    }
+  };
   return (
     <>
       <Navbar />
@@ -44,24 +60,33 @@ const Contact = () => {
             <div className="w-full h-full space-y-5">
               <div className="w-full h-full flex flex-col items-start space-y-8">
                 <input
+                  onChange={(e) => setData({ ...data, name: e.target.value })}
                   placeholder="Enter your name"
                   className="w-full border-b-2 border-orange-500 py-2 outline-none"
                 />
                 <input
+                  onChange={(e) => setData({ ...data, email: e.target.value })}
                   placeholder="Enter your email"
                   className="w-full border-b-2 border-orange-500 py-2 outline-none"
                 />
                 <input
+                  onChange={(e) => setData({ ...data, phone: e.target.value })}
                   placeholder="Enter your phone number"
                   className="w-full border-b-2 border-orange-500 py-2 outline-none"
                 />
                 <input
+                  onChange={(e) =>
+                    setData({ ...data, message: e.target.value })
+                  }
                   placeholder="How can we help you?"
                   className="w-full border-b-2 border-orange-500 py-2 outline-none"
                 />
               </div>
               <div className="w-full h-full flex items-start">
-                <button className="bg-orange-600 text-white font-medium px-5 py-2 rounded">
+                <button
+                  onClick={sendEmail}
+                  className="bg-orange-600 text-white font-medium px-5 py-2 rounded"
+                >
                   Submit
                 </button>
               </div>
