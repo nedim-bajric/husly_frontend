@@ -25,16 +25,18 @@ const Listings = () => {
   return (
     <div className="w-full h-full">
       <div className="w-full h-full px-5 py-2">
-        <div className="w-full flex flex-col items-start space-y-4">
-          <h1 className="text-4xl font-medium max-w-xs">
-            Latest Property Listings
-          </h1>
-          <span className="text-gray-500 text-lg">
-            Our latest listings at a glance. Explore property from all sizes.
-          </span>
+        <div className="w-full flex flex-col items-start space-y-4 sm:flex-row">
+          <div className="w-full h-full sm:flex-1">
+            <h1 className="text-4xl font-medium max-w-xs">
+              Latest Property Listings
+            </h1>
+            <span className="text-gray-500 text-lg sm:max-w-xs">
+              Our latest listings at a glance. Explore property from all sizes.
+            </span>
+          </div>
           <button
             onClick={() => navigate("/listings")}
-            className=" text-orange-500 font-medium text-xl border-2 border-orange-500 px-6 py-2 rounded-md"
+            className="sm:flex-1 sm:max-w-xs text-orange-500 font-medium text-xl border-2 border-orange-500 px-6 py-2 rounded-md"
           >
             Explore All Listing
           </button>
@@ -45,7 +47,7 @@ const Listings = () => {
           </div>
         ) : (
           <>
-            <div className="w-full flex flex-col items-center py-10 space-y-2  ">
+            <div className="w-full flex flex-col items-center py-10 space-y-2  sm:flex-row  ">
               {cats.map((cat) => (
                 <span
                   onClick={() => setCurrentCat(cat)}
@@ -59,7 +61,7 @@ const Listings = () => {
                 </span>
               ))}
             </div>
-            <div className="w-full min-h-full flex flex-col space-y-5">
+            <div className="w-full flex flex-col space-y-5 lg:space-y-0 sm:flex-row sm:space-y-0 sm:justify-around ">
               {data
                 ?.filter((c) => c.category === currentCat)
                 .map((item) => (

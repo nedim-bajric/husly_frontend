@@ -33,9 +33,12 @@ const Team = () => {
           {loading ? (
             <Loader />
           ) : (
-            <div className="w-full flex flex-col items-center space-y-5 p-5">
+            <div className="w-full flex flex-col items-center space-y-5 p-5 sm:flex-row sm:flex-wrap sm:justify-around sm:space-y-0">
               {agents.map((agent) => (
-                <Link to={`/team-member/${agent.name}`} className="w-full">
+                <Link
+                  to={`/team-member/${agent.name}`}
+                  className="w-full sm:w-2/5 sm:my-5"
+                >
                   <div
                     onClick={() => dispatch(pickAgent(agent))}
                     style={{

@@ -10,7 +10,7 @@ const ListingCard = ({ item }) => {
       onClick={() =>
         navigate(`/project/${item.street}`) || dispatch(pickData(item))
       }
-      className="w-full h-[440px] "
+      className="w-full h-[440px] sm:w-2/5 lg:h-[500px]"
     >
       <div className="w-full h-full relative">
         <div
